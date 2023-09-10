@@ -1,18 +1,22 @@
-;; Package
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
+;; Init
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (package-initialize)
 ;; (package-refresh-contents)
-(dolist (package '(company
-                   sicp
-                   use-package))
-  (unless (package-installed-p package)
-    (package-install package)))
+;; (dolist (package '(company
+;;                    sicp
+;;                    use-package))
+;;   (unless (package-installed-p package)
+;;     (package-install package)))
 ;; (require 'use-package)
 ;; (setq use-package-always-defer t
 ;;       use-package-always-ensure t)
 
 ;; Global
+;; appearance
+(menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tool-bar-mode -1)
 ;; auto-complete
 (global-company-mode)
 (setq-default company-idle-delay 0)
@@ -30,9 +34,7 @@
 
 ;; Hooks
 (defun add-hooks-functions (hooks functions)
-  (mapcar (lambda (hook)
-            (mapcar (lambda (func) (add-hook hook func)) functions))
-          hooks))
+  (mapcar (lambda (h) (mapcar (lambda (f) (add-hook h f)) functions)) hooks))
 ;; text & prog
 (add-hooks-functions '(prog-mode-hook text-mode-hook)
                      '(column-number-mode
