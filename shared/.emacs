@@ -27,7 +27,6 @@
 (setq-default bookmark-save-flag 1)
 (setq-default case-fold-search nil)
 (setq-default indent-tabs-mode nil)
-(setq-default inhibit-startup-message t)
 (setq-default initial-scratch-message nil)
 (setq-default make-backup-files nil)
 (setq-default user-mail-address "cuongd@pm.me")
