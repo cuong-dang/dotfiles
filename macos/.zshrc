@@ -22,6 +22,7 @@ alias gsu='git status -u no'
 alias less='less -N'
 alias ll='ls -alhG'
 alias ls='ls -G'
+alias python='python3'
 alias pt='pytest -vvrx'
 alias rsy='rsync -rauvhP ~/iCloud/ /Volumes/My\ Passport/iCloud --delete'
 alias tf='terraform'
@@ -30,9 +31,8 @@ alias yt='youtube-dl -f bestvideo+bestaudio'
 # Path
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_301)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-# export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-# export JAVA_HOME="/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home"
-# export PATH="$PATH:/Users/cuongdang/Library/Application Support/Coursier/bin"
+export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+export PATH="$PATH:/Users/cuongdang/prog/bin:/Users/cuongdang/Library/Application Support/Coursier/bin"
 # export PATH="/usr/local/opt/node@16/bin:$PATH"
 
 # autojump
@@ -65,3 +65,6 @@ setopt inc_append_history
 # Terraform autocomplete
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/local/bin/terraform terraform
+
+# GHCup
+[ -f "/Users/cuongdang/.ghcup/env" ] && source "/Users/cuongdang/.ghcup/env" # ghcup-env
