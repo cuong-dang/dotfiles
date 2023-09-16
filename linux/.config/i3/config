@@ -191,6 +191,8 @@ bar {
 
 # My settings
 exec --no-startup-id pulseaudio --start
+exec --no-startup-id setxkbmap -option altwin:swap_alt_win
+bindsym $mod+Ctrl+Return exec emacs
 bindsym $mod+Shift+Return exec google-chrome
-bindsym XF86MonBrightnessDown exec --no-startup-id light -U 10
-bindsym XF86MonBrightnessUp exec --no-startup-id light -A 10
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 4
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 4

@@ -11,14 +11,21 @@ general {
         interval = 1
 }
 
+order += "volume master"
 order += "battery all"
 order += "memory"
 order += "load"
 order += "wireless _first_"
 order += "tztime local"
 
+volume master {
+        format = "V: %volume"
+        format_muted = "V: muted (%volume)"
+}
+
 battery all {
-        format = "%status %percentage (%remaining)"
+        format = "%status: %percentage"
+        integer_battery_capacity = true
 }
 
 memory {
