@@ -47,7 +47,7 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '(%b)'
 setopt PROMPT_SUBST
-PROMPT='%n@%m %1~ ${vcs_info_msg_0_} %# '
+PROMPT='%n@%m:%F{green}%~%f%F{red}${vcs_info_msg_0_}%f$ '
 
 # autojump
 [[ -s /home/cuong/.autojump/etc/profile.d/autojump.sh ]] && source /home/cuong/.autojump/etc/profile.d/autojump.sh
