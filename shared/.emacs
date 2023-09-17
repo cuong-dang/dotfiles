@@ -18,6 +18,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
+(setq-default inhibit-startup-screen t)
 ;; auto-complete
 (global-company-mode)
 (setq-default company-idle-delay 0)

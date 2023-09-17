@@ -24,7 +24,7 @@ volume master {
 }
 
 battery all {
-        format = "%status: %percentage"
+        format = "%status@%percentage"
         integer_battery_capacity = true
 }
 
