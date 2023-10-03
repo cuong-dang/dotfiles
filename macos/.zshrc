@@ -1,5 +1,6 @@
 # Alias
 alias cloc='cloc --vcs git .'
+alias ctest='ctest --output-on-failure'
 alias dcd='docker compose down --remove-orphans'
 alias dcu='docker compose up'
 alias dvrm='docker volume ls -q | xargs docker volume rm'
@@ -19,7 +20,6 @@ alias gpl='git pull'
 alias gps='git push'
 alias gs='git status'
 alias gsu='git status -u no'
-alias less='less -N'
 alias ll='ls -alhG'
 alias ls='ls -G'
 alias python='python3'
@@ -56,7 +56,7 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '(%b)'
 setopt PROMPT_SUBST
-PROMPT='%n@%m %1~ ${vcs_info_msg_0_} %# '
+PROMPT='%n@%m:%F{blue}%~%f%F{red}${vcs_info_msg_0_}%f$ '
 
 # history across tmux
 setopt share_history

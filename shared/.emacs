@@ -1,17 +1,18 @@
-;; Init
+;; Packages
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
-;; (package-refresh-contents)
-;; (dolist (package '(company
-;;                    sicp
-;;                    eglot
-;;                    use-package))
-;;   (unless (package-installed-p package)
-;;     (package-install package)))
+(unless package-archive-contents (package-refresh-contents))
+;; install tried-and-true packages
+(dolist (package '(company
+                   sicp
+                   eglot
+                   use-package))
+  (unless (package-installed-p package)
+    (package-install package)))
 (require 'use-package)
-(setq-default use-package-always-defer t
-              use-package-always-ensure t)
+(setq-default use-package-always-ensure t
+              use-package-always-defer t)
 
 ;; Global
 ;; appearance
@@ -19,6 +20,7 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (setq-default inhibit-startup-screen t)
+(global-display-line-numbers-mode)
 ;; auto-complete
 (global-company-mode)
 (setq-default company-idle-delay 0)
@@ -33,7 +35,6 @@
 (setq-default case-fold-search nil)
 ;; disable tabs
 (setq-default indent-tabs-mode nil)
-(setq-default initial-scratch-message nil)
 (setq-default make-backup-files nil)
 (setq-default user-mail-address "cuongd@pm.me")
 (setq-default vc-follow-symlinks t)
@@ -48,8 +49,7 @@
 ;; prog
 (add-hooks-functions '(prog-mode-hook)
                      '(display-fill-column-indicator-mode
-                       (lambda () (set-fill-column 80))
-                       (lambda () (setq display-line-numbers 'relative))))
+                       (lambda () (set-fill-column 80))))
 ;; text
 (add-hooks-functions '(text-mode-hook latex-mode-hook)
                      '(auto-fill-mode
@@ -68,7 +68,7 @@
 (global-set-key (kbd "C-x p") 'windmove-right)
 (global-set-key (kbd "M-%") 'replace-regexp)
 (global-set-key (kbd "C-c /") 'comment-region)
-(global-set-key (kbd "C-c .") 'uncomment-region)
+(global-set-key (kbd "C-c ?") 'uncomment-region)
 
 ;; Scheme
 (require 'xscheme)
