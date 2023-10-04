@@ -5,8 +5,8 @@
 (unless package-archive-contents (package-refresh-contents))
 ;; install tried-and-true packages
 (dolist (package '(company
-                   sicp
                    eglot
+                   sicp
                    use-package))
   (unless (package-installed-p package)
     (package-install package)))
