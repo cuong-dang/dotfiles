@@ -21,6 +21,7 @@
 (tool-bar-mode -1)
 (setq-default inhibit-startup-screen t)
 (global-display-line-numbers-mode)
+(setq-default display-line-numbers-type 'relative)
 ;; auto-complete
 (global-company-mode)
 (setq-default company-idle-delay 0)

@@ -50,5 +50,5 @@ setopt PROMPT_SUBST
 PROMPT='%n@%m:%F{green}%~%f%F{red}${vcs_info_msg_0_}%f$ '
 
 # autojump
-[[ -s /home/cuong/.autojump/etc/profile.d/autojump.sh ]] && source /home/cuong/.autojump/etc/profile.d/autojump.sh
+[[ -s /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
 autoload -U compinit && compinit -u
