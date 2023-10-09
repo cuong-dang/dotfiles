@@ -190,8 +190,10 @@ bar {
 }
 
 # My settings
-exec --no-startup-id setxkbmap -option altwin:swap_alt_win
+# exec --no-startup-id setxkbmap -option altwin:swap_alt_win
+bindsym $mod+x move workspace to output next
 bindsym $mod+Ctrl+Return exec emacs
 bindsym $mod+Shift+Return exec google-chrome
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 4
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 4
+exec --no-startup-id xbanish

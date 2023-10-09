@@ -63,10 +63,10 @@
                                       (untabify (point-min) (point-max))))))
 
 ;; Key bindings
-(global-set-key (kbd "C-x u") 'windmove-left)
-(global-set-key (kbd "C-x i") 'windmove-down)
-(global-set-key (kbd "C-x o") 'windmove-up)
-(global-set-key (kbd "C-x p") 'windmove-right)
+;; (global-set-key (kbd "C-x u") 'windmove-left)
+;; (global-set-key (kbd "C-x i") 'windmove-down)
+;; (global-set-key (kbd "C-x o") 'windmove-up)
+;; (global-set-key (kbd "C-x p") 'windmove-right)
 (global-set-key (kbd "M-%") 'replace-regexp)
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
@@ -98,6 +98,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(eglot-ignored-server-capabilities '(:inlayHintProvider))
  '(package-selected-packages '(clang-format eglot sicp company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.

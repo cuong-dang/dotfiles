@@ -14,7 +14,7 @@ alias gk='git checkout'
 alias gkm='git checkout main && gpl'
 alias gl='git log --all --graph --decorate --oneline'
 alias gll='git log --all --graph --decorate'
-alias gm='git merge'
+alias gm='git merge --no-ff'
 alias gpl='git pull'
 alias gps='git push'
 alias gs='git status'
@@ -32,6 +32,9 @@ alias yt='youtube-dl -f bestvideo+bestaudio'
 export PATH="$PATH:/Users/cuongdang/code/bin"
 
 # zsh
+export HISTFILE=~/.zsh_history
+export HISTSIZE=9999
+export SAVEHIST=9999
 source ~/code/zsh-autosuggestions/zsh-autosuggestions.zsh
 source ~/code/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # substring completion
@@ -47,7 +50,7 @@ autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats '(%b)'
 setopt PROMPT_SUBST
-PROMPT='%n@%m:%F{green}%~%f%F{red}${vcs_info_msg_0_}%f$ '
+PROMPT='%n@%m:%F{green}%1~%f%F{red}${vcs_info_msg_0_}%f$ '
 
 # autojump
 [[ -s /usr/share/autojump/autojump.sh ]] && . /usr/share/autojump/autojump.sh
