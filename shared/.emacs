@@ -1,18 +1,17 @@
 ;; Packages
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
-(package-initialize)
-(unless package-archive-contents (package-refresh-contents))
-;; install tried-and-true packages
+;; (require 'package)
+;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (package-initialize)
+;; (unless package-archive-contents (package-refresh-contents))
 (dolist (package '(company
                    eglot
                    sicp
                    use-package))
   (unless (package-installed-p package)
     (package-install package)))
-(require 'use-package)
-(setq-default use-package-always-ensure t
-              use-package-always-defer t)
+;; (require 'use-package)
+;; (setq-default use-package-always-ensure t
+;;               use-package-always-defer t)
 
 ;; Global
 ;; appearance
@@ -26,38 +25,34 @@
 (global-company-mode)
 (setq-default company-idle-delay 0)
 (setq-default company-minimum-prefix-length 1)
-(electric-pair-mode 1)
 ;; misc
-;; keep buffers up-to-date
-(global-auto-revert-mode)
-;; disable auto-save
-(setq-default auto-save-default nil)
-(setq-default bookmark-save-flag 1)
-(setq-default case-fold-search nil)
-;; disable tabs
-(setq-default indent-tabs-mode nil)
-(setq-default make-backup-files nil)
+(global-auto-revert-mode) ;; keep buffers up to date
+(setq-default auto-save-default nil) ;; disable auto-save
+(setq-default make-backup-files nil) ;; disable backup files
+(setq-default bookmark-save-flag 1) ;; always save bookmarks
+(setq-default case-fold-search nil) ;; ignore case search
+(setq-default indent-tabs-mode nil) ;; disable tabs
+(setq-default vc-follow-symlinks t) ;; follow symlinks
 (setq-default user-mail-address "cuongd@pm.me")
-(setq-default vc-follow-symlinks t)
 
 ;; Hooks
-(defun add-hooks-functions (hooks functions)
+(defun add-to-hooks (hooks functions)
   (mapcar (lambda (h) (mapcar (lambda (f) (add-hook h f)) functions)) hooks))
 ;; text & prog
-(add-hooks-functions '(prog-mode-hook text-mode-hook)
+(add-to-hooks '(prog-mode-hook text-mode-hook)
                      '(column-number-mode
                        (lambda () (setq show-trailing-whitespace t))))
 ;; prog
-(add-hooks-functions '(prog-mode-hook)
+(add-to-hooks '(prog-mode-hook)
                      '(display-fill-column-indicator-mode
                        (lambda () (set-fill-column 80))))
 ;; text
-(add-hooks-functions '(text-mode-hook latex-mode-hook)
+(add-to-hooks '(text-mode-hook latex-mode-hook)
                      '(auto-fill-mode
                        flyspell-mode
                        (lambda () (set-fill-column 72))))
 ;; all
-(add-hooks-functions '(before-save-hook)
+(add-to-hooks '(before-save-hook)
                      '(delete-trailing-whitespace
                        (lambda () (if (not indent-tabs-mode)
                                       (untabify (point-min) (point-max))))))
@@ -71,14 +66,14 @@
 (global-set-key (kbd "C-c /") 'comment-region)
 (global-set-key (kbd "C-c ?") 'uncomment-region)
 
+;; Git
+(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . text-mode))
+(add-to-list 'auto-mode-alist '("README" . text-mode))
+
 ;; Scheme
 (require 'xscheme)
 (setq-default scheme-program-name "/usr/local/bin/mit-scheme")
 (add-hook 'scheme-mode-hook (lambda () (setq tab-width 2)))
-
-;; Auto-mode
-(add-to-list 'auto-mode-alist '("COMMIT_EDITMSG" . text-mode))
-(add-to-list 'auto-mode-alist '("README" . text-mode))
 
 ;; C/C++
 (require 'eglot)
@@ -87,18 +82,22 @@
 (add-hook 'c++-mode-hook 'eglot-ensure)
 (global-set-key (kbd "C-c j") 'xref-find-definitions)
 (global-set-key (kbd "C-c k") 'xref-find-references)
+;; clang-format
 (require 'clang-format)
 (setq-default clang-format-fallback-style "llvm")
 (add-hook 'before-save-hook
           (lambda ()
-            (when (eq major-mode 'c-mode) (clang-format-buffer))))
+            (when (or (eq major-mode 'c-mode)
+                      (eq major-mode 'c++-mode))
+              (clang-format-buffer))))
+
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(clang-format eglot sicp company)))
+ '(package-selected-packages '(py-autopep8 elpy clang-format eglot sicp company)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
