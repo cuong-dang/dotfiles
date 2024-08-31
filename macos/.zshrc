@@ -20,23 +20,23 @@ alias gs='git status'
 alias ll='ls -alhG'
 alias ls='ls -G'
 alias py='python3'
+alias python='python3'
 alias pt='pytest -vvrx'
 alias rsy='rsync -rauvhP ~/iCloud/ /Volumes/My\ Passport/iCloud --delete'
 alias tf='terraform'
-alias yt='youtube-dl -f bestvideo+bestaudio'
 
 # Path
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_301)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
-export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-export PATH="$PATH:/Users/cuongdang/bin:/Users/cuongdang/Library/Application Support/Coursier/bin"
+# export JAVA_HOME=$(/usr/libexec/java_home -v 17)
+# export PATH="$PATH:/Users/cuong/Library/Application Support/Coursier/bin"
 
 # autojump
 [ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
 
 # Zsh
-source $HOMEBREW_PREFIX/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-source $HOMEBREW_PREFIX/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $(brew --prefix)/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 # Substring completion
 zstyle ':completion:*' completer _complete
 zstyle ':completion:*' matcher-list '' 'm:{[:lower:][:upper:]}={[:upper:][:lower:]}' '+l:|=* r:|=*'
@@ -45,20 +45,21 @@ compinit
 autoload -U select-word-style
 select-word-style bash
 export WORDCHARS=''
+
 # Prompt
 autoload -Uz vcs_info
 precmd() { vcs_info }
 zstyle ':vcs_info:git:*' formats ' (%b)'
 setopt PROMPT_SUBST
-PROMPT='%n@%m:%F{blue}%1~%f%F{red}${vcs_info_msg_0_}%f$ '
+PROMPT='%F{blue}%1~%f%F{red}${vcs_info_msg_0_}%f$ '
 
 # History across tmux
-setopt share_history
-setopt inc_append_history
+# setopt share_history
+# setopt inc_append_history
 
 # Terraform autocomplete
 # autoload -U +X bashcompinit && bashcompinit
 # complete -o nospace -C /usr/local/bin/terraform terraform
 
 # GHCup
-[ -f "/Users/cuongdang/.ghcup/env" ] && source "/Users/cuongdang/.ghcup/env" # ghcup-env
+# [ -f "/Users/cuongdang/.ghcup/env" ] && source "/Users/cuongdang/.ghcup/env" # ghcup-env
