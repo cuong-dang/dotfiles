@@ -51,6 +51,12 @@ zstyle ':vcs_info:git:*' formats ' (%b)'
 setopt PROMPT_SUBST
 PROMPT='%F{blue}%1~%f%F{red}${vcs_info_msg_0_}%f$ '
 
+# tmux
+if ! [[ -n "$TMUX" ]]; then
+    tmux
+fi
+
+
 # History across tmux
 # setopt share_history
 # setopt inc_append_history
