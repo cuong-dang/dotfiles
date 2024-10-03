@@ -1,7 +1,8 @@
 ;; Packages
 ;; https://melpa.org/#/getting-started
 ;; (require 'package)
-;; (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+;; (add-to-list 'package-archives
+;;              '("melpa" . "https://melpa.org/packages/") t)
 ;; (package-initialize)
 
 ;; Global
@@ -10,33 +11,28 @@
 (scroll-bar-mode -1)
 (tool-bar-mode -1)
 (setq-default inhibit-startup-screen t)
-;; (global-display-line-numbers-mode)
-;; (setq-default display-line-numbers-type 'relative)
+(global-display-line-numbers-mode)
+(setq-default display-line-numbers-type 'relative)
 ;; auto-complete
-(global-company-mode)
-(setq-default company-idle-delay 0)
-(setq-default company-minimum-prefix-length 1)
+;; (global-company-mode)
+;; (setq-default company-idle-delay 0)
+;; (setq-default company-minimum-prefix-length 1)
 ;; misc
-(global-auto-revert-mode) ;; keep buffers up to date
+(global-auto-revert-mode)            ;; keep buffers up to date
 (setq-default auto-save-default nil) ;; disable auto-save
 (setq-default make-backup-files nil) ;; disable backup files
-(setq-default bookmark-save-flag 1) ;; always save bookmarks
-(setq-default case-fold-search nil) ;; ignore case search
-(setq-default indent-tabs-mode nil) ;; disable tabs
-(setq-default vc-follow-symlinks t) ;; follow symlinks
+(setq-default bookmark-save-flag 1)  ;; always save bookmarks
+(setq-default case-fold-search nil)  ;; ignore case search
+(setq-default indent-tabs-mode nil)  ;; disable tabs
+(setq-default vc-follow-symlinks t)  ;; follow symlinks
 (setq-default user-mail-address "cuongd@pm.me")
 
 ;; Hooks
 (defun add-to-hooks (hooks functions)
   (mapcar (lambda (h)
-            (mapcar (lambda (f)
-                      (add-hook h f))
+            (mapcar (lambda (f) (add-hook h f))
                     functions))
           hooks))
-;; text & prog
-(add-to-hooks '(prog-mode-hook text-mode-hook)
-              '(column-number-mode
-                (lambda () (setq show-trailing-whitespace t))))
 ;; prog
 (add-to-hooks '(prog-mode-hook)
               '(display-fill-column-indicator-mode
@@ -85,15 +81,3 @@
 ;;             (when (or (eq major-mode 'c-mode)
 ;;                       (eq major-mode 'c++-mode))
 ;;               (clang-format-buffer))))
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages '(sicp company)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )

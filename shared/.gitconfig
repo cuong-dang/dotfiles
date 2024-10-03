@@ -1,5 +1,7 @@
 [pull]
-	ff = only
+        ff = only
 [user]
-	name = Cuong Dang
-	email = cuongd@pm.me
+        name = Cuong Dang
+        email = cuongd@pm.me
+[core]
+        editor = emacs -nw
