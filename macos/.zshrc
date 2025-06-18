@@ -28,10 +28,10 @@ alias tf='terraform'
 # export JAVA_HOME=$(/usr/libexec/java_home -v 1.8.0_301)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 11)
 # export JAVA_HOME=$(/usr/libexec/java_home -v 17)
-export PATH="$PATH:/Users/cuong/Library/Application Support/Coursier/bin"
+# export PATH="$PATH:/Users/cuong/Library/Application Support/Coursier/bin"
 
 # autojump
-[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+[ -f /opt/homebrew/etc/profile.d/autojump.sh ] && . /opt/homebrew/etc/profile.d/autojump.sh
 
 # zsh
 source $(brew --prefix)/share/zsh-autosuggestions/zsh-autosuggestions.zsh
